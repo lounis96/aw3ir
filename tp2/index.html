@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP2</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div><h1>TP #2</h1></div>
+     <div>
+      <form action ="action.html" method="get">
+        <p>
+            <label for="firstname">Prénom</label>
+            <input
+              type="text"
+              name="firstname"
+              id="firstname"
+              minlength="2"
+              maxlength="20"
+              required
+            />
+            <span class="icon-ok">✔</span>
+          </p>
+          <p>
+            <label for="name">Nom</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              minlength="2"
+              maxlength="20"
+              required
+            />
+            <span class="icon-ok">✔</span>
+          </p>
+          <p>
+            <label for="birthday">Date de naissance</label>
+            <input 
+            type="date" 
+            name="birthday"
+            id="birthday" 
+            value="1996-09-26" 
+            min="1900-01-01" 
+            max="2003-12-31" 
+            required
+            />
+            <span class="icon-ok">✔</span>
+          </p>
+          <p>
+            <label for="address">Adresse</label>
+            <input
+              type="text"
+              name="address"
+              id="address"
+              minlength="5"
+              maxlength="50"
+              required
+            />
+            <span class="icon-ok">✔</span>
+          </p>
+           <p>
+            <label for="email">Email </label>
+            <input 
+            type="email" 
+            name="email" 
+            id="email" 
+            minlength="5"
+            maxlength="30"
+            required 
+            />
+            <span class="icon-ok">✔</span>
+           </p>  
+           <input class="btn-primary" type="submit" value="Envoyer" />
+
+
+      </form> 
+     </div>
+     <hr/>
+     <div  align="center">
+     <center> ~ Fin du TP ~  </center></div>
+
+
+</body>
+</html>
