@@ -11262,5 +11262,18 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+#monFormulaire {
+  max-width: 400px;
+  margin: 0 auto;
+}
 
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input, button {
+  padding: 8px;
+  margin-bottom: 10px;
+}
 /*# sourceMappingURL=bootstrap.css.map */
