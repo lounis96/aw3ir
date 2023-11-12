@@ -100,3 +100,6 @@ function obtenirCoordonneesGPS() {
         alert('La géolocalisation n\'est pas prise en charge par votre navigateur.');
     }
 }
+function calcNbChar(id) {
+    document.querySelector(`#${id} + span`).textContent = document.querySelector(`#${id}`).value.length;
+  }
