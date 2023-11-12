@@ -76,3 +76,27 @@ function constructMap(address){
         'url': `http://maps.google.com/maps?q=${address}`,
     };
 }
+
+document.getElementById('btnGPS').addEventListener('click', function() {
+    obtenirCoordonneesGPS();
+});
+function obtenirCoordonneesGPS() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            function(position) {
+                // Récupérer les coordonnées
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+
+                // Utiliser les coordonnées comme nécessaire (par exemple, les afficher dans le champ d'adresse)
+                document.getElementById('adresse').value = 'Latitude : ' + latitude + ', Longitude : ' + longitude;
+            },
+            function(error) {
+                // Gérer les erreurs de géolocalisation
+                console.error('Erreur de géolocalisation : ', error.message);
+            }
+        );
+    } else {
+        alert('La géolocalisation n\'est pas prise en charge par votre navigateur.');
+    }
+}
