@@ -14,41 +14,41 @@
     <div class="container">
         <h3>TP 4 AW</h3>
         <h6>Avec Bootstrap 5</h6>
-        <form method="POST" action="#" onsubmit="return validate()">
+        <form method="POST" onsubmit="validate(event)">
             <div class="row mb-3">
                 <label for="nom" class="col-sm-2 col-form-label">Nom</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nom" onkeyup="calcNbChar(this.id)" />
-                    <span></span> char <!-- balise mise à jour dynamiquement en JS -->
+                    <input type="text" class="form-control" id="nom" onkeyup="calcNbChar(this.id)"/>  <span></span> char <!-- balise mise à jour dynamiquement en JS -->
                 </div>
             </div>
             <div class="row mb-3">
                 <label for="prenom" class="col-sm-2 col-form-label">Prénom</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="prenom">
+                    <input type="text" class="form-control" id="prenom"  onkeyup="calcNbChar(this.id)"/> <span></span> char
                 </div>
             </div>
             <div class="row mb-3">
                 <label for="date-de-naissance" class="col-sm-2 col-form-label">Date de naissance</label>
                 <div class="col-sm-10">
-                    <input type="date" class="form-control" id="date-de-naissance">
+                    <input type="date" class="form-control" id="date-de-naissance" onkeyup="calcNbChar(this.id)"/> <span></span> char
                 </div>
             </div>
             <div class="row mb-3">
                 <label for="adresse" class="col-sm-2 col-form-label">Adresse</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="adresse">
-                    <button type="button" id="btnGPS">Utiliser le GPS</button>
+                    <input type="text" class="form-control" id="adresse"  onkeyup="calcNbChar(this.id)"/> <span></span> char
+                    <button type="button" id="btnGPS">GPS</button>
+                  
                 </div>
             </div>
             <div class="row mb-3">
                 <label for="email" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email">
+                    <input type="email" class="form-control" id="email"  onkeyup="calcNbChar(this.id)"/> <span></span> char
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Valider</button>
+            <button type="submit" class="btn btn-primary">ajouter</button>
         </form>
     </div>
 
@@ -69,7 +69,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="dataModal" tabindex="-1" aria-labelledby="dataModal" aria-hidden="true">
+    <!--<div class="modal fade" id="dataModal" tabindex="-1" aria-labelledby="dataModal" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -90,10 +90,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
+
+<button type="button" class="btn btn-primary" id="RESET">RESET</button>
     <table>
-  <caption> liste des contactes</caption>
-  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">RESET</button>
     <thead>
         <tr>
             <th> Nom</th>
@@ -103,16 +103,11 @@
             <th> email</th>
         </tr>
     </thead>
-    <tbody>
-    <tr>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-        <!-- CODE à compléter pour insérer les autres données du contact -->
-    </tr>
-      </tbody>
+
+        <tbody>
+
+        </tbody>
+    </table>
     <!-- my scripts are here -->
     <script src="js/form-validation.js"></script>
     <script src="gps.js"></script>

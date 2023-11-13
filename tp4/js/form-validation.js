@@ -1,10 +1,15 @@
 window.onload = function () {   // ce code est exécuter une fois que toute la page est téléchargée par le navigateur
     // voir plus : https://www.w3schools.com/js/js_htmldom.asp
-     console.log( "DOM ready!" );
-
+    console.log("DOM ready!");
+    document.getElementById('RESET').addEventListener('click', function () {
+        contactStore.reset();
+        displayContactList();
+    });
+    displayContactList();
 };
 
-function validate(){
+function validate(event) {
+    event.preventDefault();
     let first_name = document.getElementById("prenom").value;
     let last_name = document.getElementById("nom").value;
     let email = document.getElementById("email").value;
@@ -12,44 +17,44 @@ function validate(){
     let data_of_birth = document.getElementById("date-de-naissance").value;
     const birthdayDate = new Date(data_of_birth);
     const birthdayTimestamp = birthdayDate.getTime();
-    
-    if (first_name == '' || last_name == '' || data_of_birth == '' || email == ''){
+
+    if (first_name == '' || last_name == '' || data_of_birth == '' || email == '') {
         let errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
         errorModal.show();
         return false;
     }
 
-    if (first_name.length < 5){
+    if (first_name.length < 5) {
         alert('Prénom doit avoir 5 caractères minimum');
         return false;
     }
 
-    if (last_name.length < 5){
+    if (last_name.length < 5) {
         alert('Nom doit avoir 5 caractères minimum');
         return false;
     }
 
-    if (address.length < 5){
+    if (address.length < 5) {
         alert('Adresse doit avoir 5 caractères minimum');
         return false;
     }
 
-    if (data_of_birth == ''){
+    if (data_of_birth == '') {
         alert('Svp entrez une date de naissance!');
         return false;
     }
 
-    if (!validateEmail(email)){
+    if (!validateEmail(email)) {
         alert('Email invalid!');
         return false;
     }
 
-    if (birthdayTimestamp > Date.now()){
+    if (birthdayTimestamp > Date.now()) {
         alert('Date de naissance invalid!');
         return false;
     }
-    
-    map_data = constructMap(address);
+
+    /*map_data = constructMap(address);
     console.log(map_data);
     // Updating modal data
     document.getElementById("target-firstname").textContent = first_name;
@@ -61,8 +66,9 @@ function validate(){
 
     let dataModal = new bootstrap.Modal(document.getElementById('dataModal'));
     dataModal.show();
-    return false;
-
+    return false;*/
+    contactStore.add(first_name, last_name, data_of_birth, address, email);
+    displayContactList();
 }
 
 function validateEmail(email) {
@@ -70,20 +76,20 @@ function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
-function constructMap(address){
+function constructMap(address) {
     return {
         'img-url': `https://maps.googleapis.com/maps/api/staticmap?markers=${address}&zoom=14&size=400x300&scale=2&key=AIzaSyAkmvI9DazzG9p77IShsz_Di7-5Qn7zkcg`,
         'url': `http://maps.google.com/maps?q=${address}`,
     };
 }
 
-document.getElementById('btnGPS').addEventListener('click', function() {
+document.getElementById('btnGPS').addEventListener('click', function () {
     obtenirCoordonneesGPS();
 });
 function obtenirCoordonneesGPS() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
-            function(position) {
+            function (position) {
                 // Récupérer les coordonnées
                 var latitude = position.coords.latitude;
                 var longitude = position.coords.longitude;
@@ -91,7 +97,7 @@ function obtenirCoordonneesGPS() {
                 // Utiliser les coordonnées comme nécessaire (par exemple, les afficher dans le champ d'adresse)
                 document.getElementById('adresse').value = 'Latitude : ' + latitude + ', Longitude : ' + longitude;
             },
-            function(error) {
+            function (error) {
                 // Gérer les erreurs de géolocalisation
                 console.error('Erreur de géolocalisation : ', error.message);
             }
@@ -102,19 +108,20 @@ function obtenirCoordonneesGPS() {
 }
 function calcNbChar(id) {
     document.querySelector(`#${id} + span`).textContent = document.querySelector(`#${id}`).value.length;
-  }
-  function displayContactList(){
+}
+function displayContactList() {
     const contactListString = localStorage.getItem('contactList'); // ici on va récupérer la liste en forme de chaine de caractère (string)
     const contactList = contactListString ? JSON.parse(contactListString) : [];
-  
-    for(const contact of contactList){
-  document.querySelector("table tbody").innerHTML +=
-    `<tr>
+    document.querySelector("table tbody").innerHTML = '';
+    for (const contact of contactList) {
+        document.querySelector("table tbody").innerHTML +=
+            `<tr>
     <td>${contact.name}</td>
-    <td> ${contact.firstName} </td>
-    <td> ${contact.data_of_birth} </td>
-    <td> ${contact.address} </td>
-    <td> ${contact.email} </td>
+    <td> ${contact.firstname} </td>
+    <td> ${contact.date} </td>
+    <td> ${contact.adress} </td>
+    <td> ${contact.mail} </td>
     <!-- CODE à compléter pour insérer les autres données du contact -->
     <tr>`;
-  } }
+    }
+}
