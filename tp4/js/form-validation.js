@@ -103,3 +103,18 @@ function obtenirCoordonneesGPS() {
 function calcNbChar(id) {
     document.querySelector(`#${id} + span`).textContent = document.querySelector(`#${id}`).value.length;
   }
+  function displayContactList(){
+    const contactListString = localStorage.getItem('contactList'); // ici on va récupérer la liste en forme de chaine de caractère (string)
+    const contactList = contactListString ? JSON.parse(contactListString) : [];
+  
+    for(const contact of contactList){
+  document.querySelector("table tbody").innerHTML +=
+    `<tr>
+    <td>${contact.name}</td>
+    <td> ${contact.firstName} </td>
+    <td> ${contact.data_of_birth} </td>
+    <td> ${contact.address} </td>
+    <td> ${contact.email} </td>
+    <!-- CODE à compléter pour insérer les autres données du contact -->
+    <tr>`;
+  } }
