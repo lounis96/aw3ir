@@ -5126,12 +5126,12 @@
               config.warnHandler.call(null, msg, vm, trace);
           }
           else if (hasConsole_1 && !config.silent) {
-              console.error("[Vue warn]: ".concat(msg).concat(trace));
+              console.error("[Vue warn$2]: ".concat(msg).concat(trace));
           }
       };
       tip = function (msg, vm) {
           if (hasConsole_1 && !config.silent) {
-              console.warn("[Vue tip]: ".concat(msg) + (vm ? generateComponentTrace(vm) : ''));
+              console.warn$2("[Vue tip]: ".concat(msg) + (vm ? generateComponentTrace(vm) : ''));
           }
       };
       formatComponentName = function (vm, includeFile) {
