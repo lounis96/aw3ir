@@ -5119,19 +5119,19 @@
       var classify_1 = function (str) {
           return str.replace(classifyRE_1, function (c) { return c.toUpperCase(); }).replace(/[-_]/g, '');
       };
-      warn$2 = function (msg, vm) {
+      warn = function (msg, vm) {
           if (vm === void 0) { vm = currentInstance; }
           var trace = vm ? generateComponentTrace(vm) : '';
           if (config.warnHandler) {
               config.warnHandler.call(null, msg, vm, trace);
           }
           else if (hasConsole_1 && !config.silent) {
-              console.error("[Vue warn$2]: ".concat(msg).concat(trace));
+              console.error("[Vue warn]: ".concat(msg).concat(trace));
           }
       };
       tip = function (msg, vm) {
           if (hasConsole_1 && !config.silent) {
-              console.warn$2("[Vue tip]: ".concat(msg) + (vm ? generateComponentTrace(vm) : ''));
+              console.warn("[Vue tip]: ".concat(msg) + (vm ? generateComponentTrace(vm) : ''));
           }
       };
       formatComponentName = function (vm, includeFile) {
