@@ -1,36 +1,26 @@
 import { NgModule } from '@angular/core';
-//import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser'; // <- obligatoire
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { DatePipe } from '@angular/common';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MeteoComponent } from './meteo/meteo.component';
+import { HttpClientModule } from '@angular/common/http';
 const appRoutes: Routes = [
-  {
-    path: '', // la page principale utilisera le component suivant
-    component: MeteoComponent,
-  },
-  {
-    path: 'meteo/:name', // la page affichant la météo prendra comme paramètre 'name'
-    //component: MeteoDetailComponent, // Ce component fera l'appel AJAX et afficher les données reçues par openWeatherMap
-  },
-  {
-    path: '**', // un chemin vers une page inexistante redirigera vers '/'
-    redirectTo: '/',
-    pathMatch: 'full',
-  },
+  { path: '', component: MeteoComponent },
+  { path: 'meteo/:name', /* component: MeteoDetailComponent */ },
+  { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
+
 @NgModule({
   declarations: [
     AppComponent,
     MeteoComponent
   ],
   imports: [
-    
-    AppRoutingModule,
-    FormsModule
+    BrowserModule,                  // ← c’est CRUCIAL
+    FormsModule,
+    RouterModule.forRoot(appRoutes), // ← pour que le router fonctionne
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })
