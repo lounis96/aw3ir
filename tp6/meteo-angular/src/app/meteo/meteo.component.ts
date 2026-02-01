@@ -33,7 +33,11 @@ export class MeteoComponent implements OnInit {
       this.city.name !== undefined &&
       this.isCityExist(this.city.name) === false
     ) {
-      let currentCity = new MeteoItem();
+      let currentCity: MeteoItem = {
+  name: this.city.name,
+  id: 0,
+  weather: null};
+
       currentCity.name = this.city.name;
       this.cityList.push(currentCity);
 
