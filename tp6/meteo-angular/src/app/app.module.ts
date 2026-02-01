@@ -30,12 +30,7 @@ const appRoutes: Routes = [
   imports: [
     
     AppRoutingModule,
-    RouterModule.forRoot(
-      appRoutes,
-      {enableTracing: true }
-    )  ],
-  providers: [DatePipe
-  //  provideClientHydration()
+    FormsModule
   ],
   bootstrap: [AppComponent]
 })

@@ -25,7 +25,7 @@
       </span>
     </div>
     <small *ngIf="city.name" class="text-muted">
-      {{city.name.length}} caractères
+      {{city?.name?.length}} caractères
     </small>
   
     <div
@@ -64,10 +64,15 @@
     <strong>json</strong> pour afficher le contenu de la variable
     <strong>cityList</strong>
   </p>
-  <pre>
-  {{cityList | json}}
-  </pre>
   
+  <!--{{cityList | json}} -->
+  
+  <ul>
+  <li *ngFor="let city of cityList">
+    {{ city.name }}
+  </li>
+</ul>
+
   <!-- fin : Listing des villes -->
   
   <hr>
